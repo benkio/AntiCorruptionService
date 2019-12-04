@@ -1,0 +1,12 @@
+* Anti Corruption Service
+
+The idea behind this service is to:
+
+- Practice Haskell & Web Development
+- Create an Anti Corruption Service between an external service and
+  the api exposed.
+
+In particular, we will use the service [[https://punkapi.com/documentation/v2][punkapi]] as external service.
+Calling the /random beer/ endpoint multiple times, we will collect
+some data about random beers and we will return the data collected as
+a single response (array) from the anti corruption layer API.
