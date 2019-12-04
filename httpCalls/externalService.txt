@@ -1,0 +1,3 @@
+# HTTP Call Random beer
+
+GET https://api.punkapi.com/v2/beers/random

@@ -1,0 +1,11 @@
+# HTTP calls to the Anti Corruption Service
+# Echo
+
+POST http://localhost:8080/echo
+Content-type: text/plain;charset=utf-8
+
+test
+
+# Sample
+
+GET http://localhost:8080/sample
