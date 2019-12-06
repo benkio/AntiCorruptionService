@@ -1,8 +1,8 @@
-module Api.Implementation.Route where
+module Api.HttpLayer.Route where
 
 import Api.Contract
-import Api.Implementation.EchoEndpoint
-import Api.Implementation.SampleEndpoint
+import Api.HttpLayer.EchoEndpoint
+import Api.HttpLayer.SampleEndpoint
 import Servant
 
 server :: Server API

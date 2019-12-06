@@ -26,6 +26,8 @@ library:
   source-dirs: src
   dependencies:
     - servant-server
+    - aeson
+    - text
 
 executables:
   antiCorruptionService-exe:

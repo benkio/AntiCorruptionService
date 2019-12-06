@@ -1,4 +1,4 @@
-module Api.Implementation.SampleEndpoint where
+module Api.HttpLayer.SampleEndpoint where
 
 import Servant
 
