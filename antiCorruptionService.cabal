@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 5f89e5fc63fcce3454e71ac9ce9e5a19c2b063f7ed83e8dce62fd2f35d9fc3df
+-- hash: 2e3554557140f2f4031b5d1f5e7baa99568df10fe0f4fa4bb561ccad638966a5
 
 name:           antiCorruptionService
 version:        0.1.0.0
@@ -41,6 +41,7 @@ library
     , base >=4.7 && <5
     , servant-server
     , text
+    , vector
   default-language: Haskell2010
 
 executable antiCorruptionService-exe
@@ -60,12 +61,16 @@ test-suite servant-test
   type: exitcode-stdio-1.0
   main-is: Spec.hs
   other-modules:
+      Api.Domain.ExternalServiceSpec
       Paths_antiCorruptionService
   hs-source-dirs:
       test
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
-      antiCorruptionService
+      aeson
+    , antiCorruptionService
     , base >=4.7 && <5
+    , bytestring
+    , hspec
     , servant
   default-language: Haskell2010

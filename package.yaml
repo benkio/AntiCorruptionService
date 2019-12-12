@@ -51,4 +51,7 @@ tests:
     - -with-rtsopts=-N
     dependencies:
     - servant
+    - hspec
+    - bytestring
+    - aeson
     - antiCorruptionService
