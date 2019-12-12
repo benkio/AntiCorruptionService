@@ -4,6 +4,7 @@ module Api.Domain.ExternalServiceSpec where
 import Test.Hspec
 import Api.Domain.ExternalService
 import Data.Aeson
+import Data.List
 import Data.ByteString.Lazy.Internal
 
 -- Sample Data ---------------------------------
@@ -21,10 +22,10 @@ hopsSample3 = "{\"attribute\":\"flavour\",\"amount\":{\"value\":37.5,\"unit\":\"
 hopsSample4 = "{\"attribute\":\"flavour\",\"amount\":{\"value\":37.5,\"unit\":\"grams\"},\"add\":\"middle\",\"name\":\"Mosaic\"}"
 hopsSample5 = "{\"attribute\":\"bitter\",\"amount\":{\"value\":12.5,\"unit\":\"grams\"},\"add\":\"start\",\"name\":\"Mosaic\"}"
 ingredientsSample =
-  mconcat ["{\"malt\":[", jsonMalts, "],\"hops\":[", jsonHops, "],\"yeast\":\"Wyeast1272-AmericanAleII™\"}"]
+  mconcat ["{\"malt\":[", jsonMalts, "],\"hops\":[", jsonHops, "],\"yeast\":\"Wyeast1272-AmericanAleII\"}"]
   where
-    jsonMalts = mconcat [maltSample1, maltSample2, maltSample3]
-    jsonHops = mconcat [hopsSample1, hopsSample2, hopsSample3, hopsSample4, hopsSample5]
+    jsonMalts = mconcat $ intersperse (packChars ", ") [maltSample1, maltSample2, maltSample3]
+    jsonHops = mconcat $ intersperse (packChars ", ") [hopsSample1, hopsSample2, hopsSample3, hopsSample4, hopsSample5]
 
 spec :: Spec
 spec = do
