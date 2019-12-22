@@ -22,7 +22,7 @@ hopsSample3 = "{\"attribute\":\"flavour\",\"amount\":{\"value\":37.5,\"unit\":\"
 hopsSample4 = "{\"attribute\":\"flavour\",\"amount\":{\"value\":37.5,\"unit\":\"grams\"},\"add\":\"middle\",\"name\":\"Mosaic\"}"
 hopsSample5 = "{\"attribute\":\"bitter\",\"amount\":{\"value\":12.5,\"unit\":\"grams\"},\"add\":\"start\",\"name\":\"Mosaic\"}"
 ingredientsSample =
-  mconcat ["{\"malt\":[", jsonMalts, "],\"hops\":[", jsonHops, "],\"yeast\":\"Wyeast1272-AmericanAleII\"}"]
+  (packChars . filter (\c -> (not (elem c [' ', '\n']))) .unpackChars . mconcat) ["{\"malt\":[", jsonMalts, "],\"yeast\":\"Wyeast1272-AmericanAleII\",\"hops\":[", jsonHops, "]}"]
   where
     jsonMalts = mconcat $ intersperse (packChars ", ") [maltSample1, maltSample2, maltSample3]
     jsonHops = mconcat $ intersperse (packChars ", ") [hopsSample1, hopsSample2, hopsSample3, hopsSample4, hopsSample5]
