@@ -27,6 +27,10 @@ ingredientsSample =
     jsonMalts = mconcat $ intersperse (packChars ", ") [maltSample1, maltSample2, maltSample3]
     jsonHops = mconcat $ intersperse (packChars ", ") [hopsSample1, hopsSample2, hopsSample3, hopsSample4, hopsSample5]
 
+methodSample = mconcat ["{\"mash_temp\":[", jsonMashTemps, "],\"fermentation\":", fermentationSample, ",\"twist\":null}"]
+  where
+    jsonMashTemps = mconcat $ intersperse (packChars ", ") [mashTempSample1, mashTempSample2]
+
 spec :: Spec
 spec = do
   describe "JSON Encoding Decoding" $ do
@@ -51,3 +55,5 @@ spec = do
       encode (decode hopsSample5 :: Maybe Hops) `shouldBe` hopsSample5
     it "Ingredients" $ do
       encode (decode ingredientsSample :: Maybe Ingredients) `shouldBe` ingredientsSample
+  it "Method" $ do
+    encode (decode methodSample :: Maybe Method) `shouldBe` methodSample
