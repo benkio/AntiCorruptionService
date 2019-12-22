@@ -27,9 +27,11 @@ ingredientsSample =
     jsonMalts = mconcat $ intersperse (packChars ", ") [maltSample1, maltSample2, maltSample3]
     jsonHops = mconcat $ intersperse (packChars ", ") [hopsSample1, hopsSample2, hopsSample3, hopsSample4, hopsSample5]
 
-methodSample = mconcat ["{\"mash_temp\":[", jsonMashTemps, "],\"fermentation\":", fermentationSample, ",\"twist\":null}"]
+methodSample = (packChars . filter (\c -> (not (elem c [' ', '\n']))) .unpackChars . mconcat) [ "{\"twist\":null,\"fermentation\":", fermentationSample, ",\"mash_temp\":[", jsonMashTemps, "]}"]
   where
     jsonMashTemps = mconcat $ intersperse (packChars ", ") [mashTempSample1, mashTempSample2]
+
+beerSample = mconcat ["{\"srm\":45,\"volume\":", tempSample,",\"attenuation_level\":79.7,\"image_url\":\"https://images.punkapi.com/v2/29.png\",\"ibu\":70,\"target_og\":1074,\"ingredients\":", ingredientsSample, ",\"tagline\":\"ImperialRedAle.\",\"ebc\":90,\"target_fg\":1015,\"name\":\"10HeadsHigh\",\"method\":", methodSample, ",\"boil_volume\":", tempSample, ",\"brewers_tips\":\"AchievetheredcolourbyusingtheratioofCaramalt,CrystalandDarkCrystalmalts.Thetrickistogetthecolour,withouttoomuchdriedfruitcharacter.\",\"food_pairing\":[\"Arrabiatapasta\",\"Mulledcheddar\",\"Toastedalmondcake\"],\"id\":29,\"abv\":7.8,\"ph\":4.4,\"contributed_by\":\"SamMason<samjbmason>\",\"first_brewed\":\"04/2013\",\"description\":\"10HeadsHighislooselybasedonourawesome2011PrototypebeerHopsKillNazis.Thisisanuncompromising7.8%ImperialRedAleloadedhighwithAmericanHops.ThinkofthisasanImperialIndiaRedAle,orasuper-chargedversionof5amSaint.Eitherwaythisisaseriouslygoodbeer!\"}"]
 
 spec :: Spec
 spec = do
@@ -55,5 +57,7 @@ spec = do
       encode (decode hopsSample5 :: Maybe Hops) `shouldBe` hopsSample5
     it "Ingredients" $ do
       encode (decode ingredientsSample :: Maybe Ingredients) `shouldBe` ingredientsSample
-  it "Method" $ do
-    encode (decode methodSample :: Maybe Method) `shouldBe` methodSample
+    it "Method" $ do
+      encode (decode methodSample :: Maybe Method) `shouldBe` methodSample
+    it "Beer" $ do
+      encode (decode beerSample :: Maybe Beer) `shouldBe` beerSample

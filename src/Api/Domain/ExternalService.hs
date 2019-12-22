@@ -15,14 +15,14 @@ data Beer = Beer {
  , first_brewed      :: !Text
  , description       :: !Text
  , image_url         :: Maybe Text
- , abv               :: Int
+ , abv               :: Double
  , ibu               :: Maybe Int
  , target_fg         :: Int
  , target_og         :: Int
  , ebc               :: Int
  , srm               :: Double
  , ph                :: Double
- , attenuation_level :: Int
+ , attenuation_level :: Double
  , volume            :: Volume
  , boil_volume       :: Volume
  , method            :: Method
