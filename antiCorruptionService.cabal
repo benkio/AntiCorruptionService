@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 2e3554557140f2f4031b5d1f5e7baa99568df10fe0f4fa4bb561ccad638966a5
+-- hash: 18e05db9e507427f50d2a5641a7c1c753336c212adfa2fc15a70957ffd908acc
 
 name:           antiCorruptionService
 version:        0.1.0.0
@@ -27,11 +27,13 @@ source-repository head
 
 library
   exposed-modules:
-      Api.Contract
       Api.Domain.ExternalService
-      Api.HttpLayer.EchoEndpoint
-      Api.HttpLayer.Route
-      Api.HttpLayer.SampleEndpoint
+      Api.HttpLayer.ExternalService.Contract
+      Api.HttpLayer.ExternalService.Route
+      Api.HttpLayer.Service.Contract
+      Api.HttpLayer.Service.EchoEndpoint
+      Api.HttpLayer.Service.Route
+      Api.HttpLayer.Service.SampleEndpoint
   other-modules:
       Paths_antiCorruptionService
   hs-source-dirs:
@@ -39,9 +41,11 @@ library
   build-depends:
       aeson
     , base >=4.7 && <5
+    , http-client
+    , http-client-tls
+    , servant-client
     , servant-server
     , text
-    , vector
   default-language: Haskell2010
 
 executable antiCorruptionService-exe

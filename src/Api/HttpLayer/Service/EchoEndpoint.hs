@@ -1,4 +1,4 @@
-module Api.HttpLayer.EchoEndpoint where
+module Api.HttpLayer.Service.EchoEndpoint where
 import Servant
 
 echoEndpoint :: String -> Handler String

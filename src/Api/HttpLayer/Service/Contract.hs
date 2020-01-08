@@ -1,6 +1,6 @@
 {-# LANGUAGE DataKinds #-}
 {-# LANGUAGE TypeOperators #-}
-module Api.Contract where
+module Api.HttpLayer.Service.Contract where
 
 import Servant
 
