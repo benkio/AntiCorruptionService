@@ -19,7 +19,7 @@ data Beer = Beer {
  , ibu               :: Maybe Int
  , target_fg         :: Int
  , target_og         :: Int
- , ebc               :: Int
+ , ebc               :: Double
  , srm               :: Double
  , ph                :: Double
  , attenuation_level :: Double
